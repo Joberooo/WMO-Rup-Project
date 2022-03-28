@@ -4,7 +4,7 @@ import * as Papa from 'papaparse';
 import RUPData from './RUPDataClass';
 
 function Reader() {
-  const [text, setText] = useState();
+  const [text, setText] = useState('...');
   const [data, setData] = useState<RUPData[]>();
 
   function load() {
