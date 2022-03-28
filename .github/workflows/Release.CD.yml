@@ -33,4 +33,5 @@ jobs:
       
       - name: Push
         run: |-
-          docker push "$IMAGE" --all-tags
+          docker push "$IMAGE:${GITHUB_SHA::7}"
+          docker push "$IMAGE:prod"
