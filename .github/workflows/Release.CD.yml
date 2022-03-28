@@ -29,7 +29,7 @@ jobs:
             -f "my-app/Dockerfile.prod" \
             -t "$IMAGE:${GITHUB_SHA::7}" \
             -t "$IMAGE:prod" \
-            .
+            ./my-app
       
       - name: Push
         run: |-
