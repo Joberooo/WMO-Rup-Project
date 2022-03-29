@@ -1,29 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Reader.css';
 import * as Papa from 'papaparse';
 import RUPData from './RUPDataClass';
+import RupRow from '../RupRowComponent/RupRow';
 
 function Reader() {
-  const [text, setText] = useState();
-  const [data, setData] = useState<RUPData[]>();
+  const [rupData, setRupData] = useState<RUPData[]>();
 
-  function load() {
+  useEffect( () => {
     fetch( './Data/data.csv' )
-    .then( response => response.text() )
-    .then( responseText => {
-        var data = Papa.parse<RUPData>(responseText, {
-          header: true
-        });
-        console.log('data:', data);
-    });
-  }
-
-  load();
+    .then( response => response.text())
+    .then( responseText => setRupData(Papa.parse<RUPData>(responseText, {header: true}).data));
+  },[]);
 
   return (
     <div className="Reader">
       <h3>RUP Data:</h3>
-      <p>{text}</p>
+      <div className='RupDataTable'>
+        {rupData?.map(item => <RupRow rupRow={item}/>)}
+      </div>
     </div>
   );
 }
