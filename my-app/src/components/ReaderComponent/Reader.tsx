@@ -4,7 +4,11 @@ import * as Papa from 'papaparse';
 import RUPData from './RUPDataClass';
 import RupRow from '../RupRowComponent/RupRow';
 
-function Reader() {
+type ReaderState = {
+  activeSystem: string;
+}
+
+function Reader(state: ReaderState) {
   const [rupData, setRupData] = useState<RUPData[]>([]);
   const [toogleSign, setToogleSign] = useState<string>('+');
   const [rupDataTableStyles, setRupDataTableStyles] = useState<React.CSSProperties>({
@@ -22,7 +26,7 @@ function Reader() {
       <div className='RupData'>
         <h3 onClick={toogleRupData}>Complete RUP Data {toogleSign}</h3>
         <div className='RupDataTable' style={rupDataTableStyles}>
-          {rupData?.map(item => <RupRow rupRow={item}/>)}
+          {rupData?.map(item => <RupRow rupRow={item} activeSystem={state.activeSystem}/>)}
         </div>
       </div>
     </div>

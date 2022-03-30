@@ -4,11 +4,12 @@ import './RupRow.css';
 
 type RupRowState = {
   rupRow: RUPData;
+  activeSystem: string;
 }
 
 function RupRow(state:RupRowState){
   return(
-    <div className="RupRow" style={setStyle(state.rupRow.discipline)}>
+    <div className="RupRow" style={checkActiveSystemAndSetStyle()}>
       <div className='RupCellLine LineOne'>
         <div className='RupCell'>
           <div className='RupCellHeader'>Phase:</div>
@@ -72,30 +73,66 @@ function RupRow(state:RupRowState){
     </div>
   );
 
-  function setStyle(discipline: string): React.CSSProperties{
+  function checkActiveSystemAndSetStyle(): React.CSSProperties{
+    var checkParameter: string = state.rupRow.discipline;
+
+    if(state.activeSystem === "Disciplines") checkParameter = state.rupRow.discipline;
+    else if(state.activeSystem === "Categories"){
+      if(state.rupRow.microProjects == 1) checkParameter = "Micro";
+      else if(state.rupRow.smallProjects == 1) checkParameter = "Small";
+      else if(state.rupRow.avgProjects == 1) checkParameter = "Medium";
+      else if(state.rupRow.bigProjects == 1) checkParameter = "Big";
+      else if(state.rupRow.veryBigProjects == 1) checkParameter = "VeryBig";
+      else if(state.rupRow.hugeProjects == 1) checkParameter = "Huge";
+    }
+
+    return setStyle(checkParameter);
+  }
+
+  function setStyle(checkParameter: string): React.CSSProperties{
     const styles: React.CSSProperties = {
-      background: "#FFF4E4",
+      background: "#FFF",
       color: "#000"
     }
 
-    if(discipline === "Modelowanie biznesowe") {
-      styles.background = "#0C4767";
-      styles.color = "#fff";
+    if(state.activeSystem === "Disciplines") {
+      if(checkParameter === "-") styles.background = "#FFF4E4";
+      else if(checkParameter === "Modelowanie biznesowe") {
+        styles.background = "#0C4767";
+        styles.color = "#fff";
+      }
+      else if(checkParameter === "Gromadzenie wymagan") {
+        styles.background = "#566E3D";
+        styles.color = "#fff";
+      }
+      else if(checkParameter === "Analiza i projektowanie") styles.background = "#FE9920";
+      else if(checkParameter === "Implementacja") styles.background = "#FA7921";
+      else if(checkParameter === "Test") styles.background = "#B9A44C";
+      else if(checkParameter === "Dostarczanie/wdrazanie") styles.background = "#FF57BB";
+      else if(checkParameter === "Konfiguracja i zmiany") styles.background = "#1AC8ED";
+      else if(checkParameter === "Zarzadzanie projektami") {
+        styles.background = "#8E5572";
+        styles.color = "#fff";
+      }
+      else if(checkParameter === "srodowisko") styles.background = "#A7CECB";
     }
-    else if(discipline === "Gromadzenie wymagan") {
-      styles.background = "#566E3D";
-      styles.color = "#fff";
+    if(state.activeSystem === "Categories") {
+      if(checkParameter === "Micro") {
+        styles.background = "#FFF4E4";
+        styles.color = "#000";
+      }
+      else if(checkParameter === "Small") {
+        styles.background = "#566E3D";
+        styles.color = "#fff";
+      }
+      else if(checkParameter === "Medium") styles.background = "#FE9920";
+      else if(checkParameter === "Big") styles.background = "#1AC8ED";
+      else if(checkParameter === "VeryBig") {
+        styles.background = "#8E5572";
+        styles.color = "#fff";
+      }
+      else if(checkParameter === "Huge") styles.background = "#A7CECB";
     }
-    else if(discipline === "Analiza i projetkowanie") styles.background = "#FE9920";
-    else if(discipline === "Implementacja") styles.background = "#FA7921";
-    else if(discipline === "Test") styles.background = "#B9A44C";
-    else if(discipline === "Dostarczanie/wdrazanie") styles.background = "#FF57BB";
-    else if(discipline === "Konfiguracja i zmiany") styles.background = "#1AC8ED";
-    else if(discipline === "Zarządzanie projektami") {
-      styles.background = "#8E5572";
-      styles.color = "#fff";
-    }
-    else if(discipline === "srodowisko") styles.background = "#A7CECB";
 
     return styles;
   }
