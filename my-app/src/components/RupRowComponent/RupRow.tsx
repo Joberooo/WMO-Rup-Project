@@ -2,14 +2,19 @@ import React from 'react';
 import RUPData from '../ReaderComponent/RUPDataClass';
 import './RupRow.css';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 type RupRowState = {
   rupRow: RUPData;
   activeSystem: string;
 }
 
 function RupRow(state:RupRowState){
+  const notifyDescription = () => toast.info(state.rupRow.description);
+
   return(
-    <div className="RupRow" style={checkActiveSystemAndSetStyle()}>
+    <div className="RupRow" style={checkActiveSystemAndSetStyle()} onClick={notifyDescription}>
       <div className='RupCellLine LineOne'>
         <div className='RupCell'>
           <div className='RupCellHeader'>Phase:</div>
