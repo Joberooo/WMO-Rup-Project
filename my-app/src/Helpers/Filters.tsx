@@ -56,3 +56,13 @@ export function getNewFilteredRupData(rupData: RUPData[], filters: Filters[]): R
 
   return timeRupDataTwo;
 }
+
+export function getPhaseData(rupData: RUPData[], phaseName: string): RUPData[]{
+  var phaseData: RUPData[] = [];
+
+  rupData.forEach(element => {
+    if(element.phase === phaseName && element.type === "Task") phaseData = [...phaseData, element];
+  })
+
+  return phaseData;
+}

@@ -1,0 +1,63 @@
+.DataTable{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.DataTable h3{
+    box-sizing: border-box;
+    border: 1px solid #000;
+    padding: 20px;
+}
+
+.DataTable .RupTable{
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: masonry;
+    justify-items: stretch;
+    align-items: center;
+}
+
+.DataTable .RupTable .RupCell{
+    align-self: stretch;
+    box-sizing: border-box;
+}
+
+.DataTable .RupTable .RupHeaders{
+    font-weight: bold;
+    background: #ddd;
+}
+
+.DataTable .RupTable .RupCell p{
+    cursor: pointer;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 10px 0;
+}
+
+.DataTable .RupTable .top{
+    border-top: 1px solid #000;
+}
+
+.DataTable .RupTable .left{
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.DataTable .RupTable .center{
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+}
+
+.DataTable .RupTable .right{
+    border-right: 1px solid #000;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.DataTable .RupTable .bottom{
+    border-bottom: 1px solid #000;
+}

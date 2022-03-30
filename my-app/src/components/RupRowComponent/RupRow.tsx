@@ -4,8 +4,8 @@ import './RupRow.css';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import setStyle from '../../Helpers/Styles';
 import { Categories } from '../../Helpers/Enums';
+import checkActiveSystemAndSetStyle from '../../Helpers/Styles';
 
 type RupRowState = {
   rupRow: RUPData;
@@ -16,7 +16,7 @@ function RupRow(state:RupRowState){
   const notifyDescription = () => toast.info(state.rupRow.description);
 
   return(
-    <div className="RupRow" style={checkActiveSystemAndSetStyle()} onClick={notifyDescription}>
+    <div className="RupRow" style={checkActiveSystemAndSetStyle(state.rupRow, state.activeSystem)} onClick={notifyDescription}>
       <div className='RupCellLine LineOne'>
         <div className='RupCell'>
           <div className='RupCellHeader'>Phase:</div>
@@ -79,22 +79,6 @@ function RupRow(state:RupRowState){
       </div>
     </div>
   );
-
-  function checkActiveSystemAndSetStyle(): React.CSSProperties{
-    var checkParameter: string = state.rupRow.discipline;
-
-    if(state.activeSystem === "Disciplines") checkParameter = state.rupRow.discipline;
-    else if(state.activeSystem === "Categories"){
-      if(state.rupRow.microProjects == 1) checkParameter = Categories.Micro;
-      else if(state.rupRow.smallProjects == 1) checkParameter = Categories.Small;
-      else if(state.rupRow.avgProjects == 1) checkParameter = Categories.Medium;
-      else if(state.rupRow.bigProjects == 1) checkParameter = Categories.Big;
-      else if(state.rupRow.veryBigProjects == 1) checkParameter = Categories.VeryBig;
-      else if(state.rupRow.hugeProjects == 1) checkParameter = Categories.Huge;
-    }
-
-    return setStyle(checkParameter, state.activeSystem);
-  }
 }
 
 export default RupRow;

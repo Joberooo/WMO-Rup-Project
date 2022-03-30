@@ -5,6 +5,7 @@ import RUPData from '../../Helpers/Classes';
 import RupRow from '../RupRowComponent/RupRow';
 import Filters from '../../Helpers/Interfaces';
 import { getNewFilteredRupData } from '../../Helpers/Filters';
+import DataTable from '../DataTableComponent/DataTable';
 
 type ReaderState = {
   activeSystem: string;
@@ -29,7 +30,8 @@ function Reader(state: ReaderState) {
   return (
     <div className="Reader">
       <div className='RupData'>
-        <h3 onClick={toogleRupData}>Complete RUP Data {toogleSign}</h3>
+        <DataTable rupData={rupData} activeSystem={state.activeSystem}/>
+        <h4 onClick={toogleRupData}>Complete RUP Data {toogleSign}</h4>
         <div className='RupDataTable' style={rupDataTableStyles}>
           {rupData?.map(item => <RupRow rupRow={item} activeSystem={state.activeSystem}/>)}
         </div>

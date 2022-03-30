@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Categories, Disciplines } from '../../Helpers/Enums';
 import getNewFilters from '../../Helpers/Filters';
 import Filters from '../../Helpers/Interfaces';
-import setStyle from '../../Helpers/Styles';
+import { setStyle } from '../../Helpers/Styles';
 import Reader from '../ReaderComponent/Reader';
 import './Nav.css';
 
