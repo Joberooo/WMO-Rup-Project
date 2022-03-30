@@ -1,10 +1,11 @@
 import React from 'react';
-import RUPData from '../ReaderComponent/RUPDataClass';
+import RUPData from '../../Helpers/Classes';
 import './RupRow.css';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import setStyle from '../../Helpers/Styles';
+import { Categories } from '../../Helpers/Enums';
 
 type RupRowState = {
   rupRow: RUPData;
@@ -84,12 +85,12 @@ function RupRow(state:RupRowState){
 
     if(state.activeSystem === "Disciplines") checkParameter = state.rupRow.discipline;
     else if(state.activeSystem === "Categories"){
-      if(state.rupRow.microProjects == 1) checkParameter = "Micro";
-      else if(state.rupRow.smallProjects == 1) checkParameter = "Small";
-      else if(state.rupRow.avgProjects == 1) checkParameter = "Medium";
-      else if(state.rupRow.bigProjects == 1) checkParameter = "Big";
-      else if(state.rupRow.veryBigProjects == 1) checkParameter = "VeryBig";
-      else if(state.rupRow.hugeProjects == 1) checkParameter = "Huge";
+      if(state.rupRow.microProjects == 1) checkParameter = Categories.Micro;
+      else if(state.rupRow.smallProjects == 1) checkParameter = Categories.Small;
+      else if(state.rupRow.avgProjects == 1) checkParameter = Categories.Medium;
+      else if(state.rupRow.bigProjects == 1) checkParameter = Categories.Big;
+      else if(state.rupRow.veryBigProjects == 1) checkParameter = Categories.VeryBig;
+      else if(state.rupRow.hugeProjects == 1) checkParameter = Categories.Huge;
     }
 
     return setStyle(checkParameter, state.activeSystem);

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './Reader.css';
 import * as Papa from 'papaparse';
-import RUPData from './RUPDataClass';
+import RUPData from '../../Helpers/Classes';
 import RupRow from '../RupRowComponent/RupRow';
+import Filters from '../../Helpers/Interfaces';
+import { getNewFilteredRupData } from '../../Helpers/Filters';
 
 type ReaderState = {
   activeSystem: string;
+  filters: Filters[];
 }
 
 function Reader(state: ReaderState) {
@@ -18,8 +21,10 @@ function Reader(state: ReaderState) {
   useEffect( () => {
     fetch( './Data/data.csv' )
     .then( response => response.text())
-    .then( responseText => setRupData(Papa.parse<RUPData>(responseText, {header: true}).data));
-  },[]);
+    .then( responseText => Papa.parse<RUPData>(responseText, {header: true}).data)
+    .then( responseData => getNewFilteredRupData(responseData, state.filters))
+    .then( responseFilteredData => setRupData(responseFilteredData));
+  },[state.filters]);
 
   return (
     <div className="Reader">
