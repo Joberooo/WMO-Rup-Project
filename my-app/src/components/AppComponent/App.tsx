@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Nav from '../NavComponent/Nav';
-import Reader from '../ReaderComponent/Reader';
 import './App.css';
 
 function App() {
@@ -8,7 +7,6 @@ function App() {
     <div className="App">
       <React.StrictMode>
         <Nav />
-        <Reader />
       </React.StrictMode>
     </div>
   );

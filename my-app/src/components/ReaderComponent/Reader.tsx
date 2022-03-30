@@ -5,7 +5,11 @@ import RUPData from './RUPDataClass';
 import RupRow from '../RupRowComponent/RupRow';
 
 function Reader() {
-  const [rupData, setRupData] = useState<RUPData[]>();
+  const [rupData, setRupData] = useState<RUPData[]>([]);
+  const [toogleSign, setToogleSign] = useState<string>('+');
+  const [rupDataTableStyles, setRupDataTableStyles] = useState<React.CSSProperties>({
+    display: 'none',
+  });
 
   useEffect( () => {
     fetch( './Data/data.csv' )
@@ -15,12 +19,29 @@ function Reader() {
 
   return (
     <div className="Reader">
-      <h3>RUP Data:</h3>
-      <div className='RupDataTable'>
-        {rupData?.map(item => <RupRow rupRow={item}/>)}
+      <div className='RupData'>
+        <h3 onClick={toogleRupData}>Complete RUP Data {toogleSign}</h3>
+        <div className='RupDataTable' style={rupDataTableStyles}>
+          {rupData?.map(item => <RupRow rupRow={item}/>)}
+        </div>
       </div>
     </div>
   );
+
+  function toogleRupData(){
+    if(toogleSign === "+") {
+      setToogleSign("-");
+      setRupDataTableStyles({
+        display: 'block'
+      });
+    }
+    else {
+      setToogleSign("+");
+      setRupDataTableStyles({
+        display: 'none'
+      });
+    }
+  }
 }
 
 export default Reader;

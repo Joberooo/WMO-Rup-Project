@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import RUPData from '../ReaderComponent/RUPDataClass';
 import './RupRow.css';
 
@@ -7,9 +7,8 @@ type RupRowState = {
 }
 
 function RupRow(state:RupRowState){
-
   return(
-    <div className="RupRow">
+    <div className="RupRow" style={setStyle(state.rupRow.discipline)}>
       <div className='RupCellLine LineOne'>
         <div className='RupCell'>
           <div className='RupCellHeader'>Phase:</div>
@@ -71,8 +70,35 @@ function RupRow(state:RupRowState){
         <div className='RupCellContent'>{state.rupRow.description}</div>
       </div>
     </div>
-  )
+  );
+
+  function setStyle(discipline: string): React.CSSProperties{
+    const styles: React.CSSProperties = {
+      background: "#FFF4E4",
+      color: "#000"
+    }
+
+    if(discipline === "Modelowanie biznesowe") {
+      styles.background = "#0C4767";
+      styles.color = "#fff";
+    }
+    else if(discipline === "Gromadzenie wymagan") {
+      styles.background = "#566E3D";
+      styles.color = "#fff";
+    }
+    else if(discipline === "Analiza i projetkowanie") styles.background = "#FE9920";
+    else if(discipline === "Implementacja") styles.background = "#FA7921";
+    else if(discipline === "Test") styles.background = "#B9A44C";
+    else if(discipline === "Dostarczanie/wdrazanie") styles.background = "#FF57BB";
+    else if(discipline === "Konfiguracja i zmiany") styles.background = "#1AC8ED";
+    else if(discipline === "Zarządzanie projektami") {
+      styles.background = "#8E5572";
+      styles.color = "#fff";
+    }
+    else if(discipline === "srodowisko") styles.background = "#A7CECB";
+
+    return styles;
+  }
 }
 
 export default RupRow;
-

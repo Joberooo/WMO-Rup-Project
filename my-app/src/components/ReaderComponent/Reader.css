@@ -1,0 +1,25 @@
+.Reader{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.Reader .RupData{
+    width: 100%;
+    margin: 0;
+}
+
+.Reader h3{
+    box-sizing: border-box;
+    border: 1px solid #000;
+    padding: 20px;
+}
+
+.Reader h3:hover{
+    cursor: pointer;
+}
+
+.Reader .RupDataTable{
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+}

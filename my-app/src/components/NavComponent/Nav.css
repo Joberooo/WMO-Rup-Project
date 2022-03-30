@@ -1,0 +1,39 @@
+.Nav{
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.Nav .NavSection{
+    width: 50%;
+    margin: 0;
+    padding: 15px;
+    box-sizing: border-box;
+    float: left;
+}
+
+.Nav .NavSection h3{
+    box-sizing: border-box;
+    border: 1px solid #000;
+    padding: 20px;
+}
+
+.Nav .NavSection h3:hover{
+    cursor: pointer;
+}
+
+.Nav .NavSection .NavElement{
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 20%;
+    min-height: 100px;
+    margin: 0;
+    display: flex;
+    float: left;
+    border: 1px solid #000;
+}
+
+.Nav .NavSection .Bigger{
+    width: calc(100% / 3);
+}
