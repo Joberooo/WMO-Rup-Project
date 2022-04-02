@@ -9,15 +9,13 @@ export default function getNewFilters(id: string, filters: Filters[]): Filters[]
     if(element.id === id){
       var x: Filters;
       if(element.style.background === '#fff'){
-        x = {id: element.id, status: !element.status, style: {background: '#0f0'}};
-        timeFilters = [...timeFilters, x];
+        timeFilters.push({id: element.id, status: !element.status, style: {background: '#0f0'}});
       }
       else {
-        x = {id: element.id, status: !element.status, style: {background: '#fff'}};
-        timeFilters = [...timeFilters, x];
+        timeFilters.push({id: element.id, status: !element.status, style: {background: '#fff'}});
       }
     }
-    else timeFilters = [...timeFilters, element];
+    else timeFilters.push(element);
   })
 
   return timeFilters;
@@ -29,7 +27,7 @@ export function getNewFilteredRupData(rupData: RUPData[], filters: Filters[]): R
   filters.forEach(filter => {
     if(filter.status){
       rupData.forEach(singleRupData => {
-        if(singleRupData.discipline == filter.id) timeRupData = [...timeRupData, singleRupData];
+        if(singleRupData.discipline == filter.id) timeRupData.push(singleRupData);
       });
     }
   });
@@ -47,7 +45,7 @@ export function getNewFilteredRupData(rupData: RUPData[], filters: Filters[]): R
         else if(singleRupData.veryBigProjects == 1) checkParameter = Categories.VeryBig;
         else if(singleRupData.hugeProjects == 1) checkParameter = Categories.Huge;
 
-        if(checkParameter === filter.id) timeRupDataTwo = [...timeRupDataTwo, singleRupData];
+        if(checkParameter === filter.id) timeRupDataTwo.push(singleRupData);
       })
     }
   });
@@ -61,7 +59,7 @@ export function getPhaseData(rupData: RUPData[], phaseName: string): RUPData[]{
   var phaseData: RUPData[] = [];
 
   rupData.forEach(element => {
-    if(element.phase === phaseName && element.type === "Task") phaseData = [...phaseData, element];
+    if(element.phase === phaseName && element.type === "Task") phaseData.push(element);
   })
 
   return phaseData;

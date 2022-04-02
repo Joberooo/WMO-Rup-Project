@@ -33,7 +33,7 @@ function Reader(state: ReaderState) {
         <DataTable rupData={rupData} activeSystem={state.activeSystem}/>
         <h4 onClick={toogleRupData}>Complete RUP Data {toogleSign}</h4>
         <div className='RupDataTable' style={rupDataTableStyles}>
-          {rupData?.map(item => <RupRow rupRow={item} activeSystem={state.activeSystem}/>)}
+          {rupData?.map(item => <RupRow key={item.index} rupRow={item} activeSystem={state.activeSystem}/>)}
         </div>
       </div>
     </div>

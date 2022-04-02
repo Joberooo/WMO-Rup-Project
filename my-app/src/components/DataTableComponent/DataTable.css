@@ -44,7 +44,7 @@
 
 .DataTable .RupTable .left{
     border-left: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border-top: 1px solid #000;
 }
 
 .DataTable .RupTable .center{
@@ -55,9 +55,10 @@
 .DataTable .RupTable .right{
     border-right: 1px solid #000;
     border-left: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border-top: 1px solid #000;
 }
 
 .DataTable .RupTable .bottom{
     border-bottom: 1px solid #000;
+    border-top: 1px solid #000;
 }
