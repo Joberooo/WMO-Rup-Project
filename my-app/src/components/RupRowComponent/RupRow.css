@@ -1,11 +1,14 @@
 .RupRow{
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
     box-sizing: border-box;
     padding: 15px;
     overflow: hidden;
     border: 1px solid #000;
     margin-bottom: 15px;
     cursor: pointer;
+    box-shadow: 0 0 10px -5px #000;
+    border-radius: 25px;
 }
 
 .RupRow .RupCellLine{

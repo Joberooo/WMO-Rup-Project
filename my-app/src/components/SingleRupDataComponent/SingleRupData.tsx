@@ -6,13 +6,14 @@ import './SingleRupData.css';
 type SingleRupDataState = {
   singleRupData: RUPData;
   activeSystem: string;
+  hide: boolean;
 }
 
 function SingleRupData(state: SingleRupDataState) {
   const notifyDescription = () => toast.info(state.singleRupData.description);
   
   return (
-    <p className={"singleRupData"} style={checkActiveSystemAndSetStyle(state.singleRupData, state.activeSystem)} onClick={notifyDescription}>{state.singleRupData.index} :: {state.singleRupData.name}</p>
+    <p className={"singleRupData" + (state.hide ? " hiddenData" : "")} style={checkActiveSystemAndSetStyle(state.singleRupData, state.activeSystem)} onClick={notifyDescription}>{state.singleRupData.index} :: {state.singleRupData.name}</p>
   );
 }
 
