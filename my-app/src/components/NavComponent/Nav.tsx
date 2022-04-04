@@ -33,7 +33,6 @@ function Nav() {
   return (
     <>
       <div className="Nav">
-        <h1>Navigation</h1>
         <div className='NavSection'>
           <h3 onClick={activeDisciplines}>Disciplines {disciplineCheck}</h3>
           <div id={filters[0].id} className='NavElement' onClick={(e) => changeFilter(e.currentTarget.id)} style={setStyle("-", activeElement)}>
